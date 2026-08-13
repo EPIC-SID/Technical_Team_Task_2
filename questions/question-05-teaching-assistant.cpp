@@ -14,7 +14,7 @@ public:
     Person(string n)
     {
         name = n;
-        cout << "Person created" << endl;
+        /*cout << "Person created" << endl;*/
     }
 
     void showPerson()
@@ -23,7 +23,7 @@ public:
     }
 };
 
-class Student : public Person
+class Student : virtual public Person
 {
 protected:
     int rollNo;
@@ -34,7 +34,7 @@ public:
         : Person(n)
     {
         rollNo = r;
-        cout << "Student created" << endl;
+       /* cout << "Student created" << endl;*/
     }
 
     void showRole()
@@ -44,7 +44,7 @@ public:
     }
 };
 
-class Employee : public Person
+class Employee : virtual public Person
 {
 protected:
     int employeeId;
@@ -55,7 +55,7 @@ public:
         : Person(n)
     {
         employeeId = id;
-        cout << "Employee created" << endl;
+       /* cout << "Employee created" << endl;*/
     }
 
     void showRole()
@@ -79,18 +79,18 @@ public:
         int r,
         int id,
         int h)
-        : Student(n, r),
+        : Person(n),Student(n, r),
           Employee(n, id)
     {
         hours = h;
-        cout << "Teaching Assistant created"
-             << endl;
+        /*cout << "Teaching Assistant created"
+             << endl;*/
     }
 
     void display()
     {
-        showPerson();
-        showRole();
+        Student::showPerson();
+        Employee::showRole();
 
         cout << "Working hours: "
              << hours << endl;
