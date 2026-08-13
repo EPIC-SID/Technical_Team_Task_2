@@ -22,6 +22,8 @@ public:
             throw invalid_argument(
                 "Amount cannot be negative");
     }
+
+    virtual ~Service() = default;
 };
 
 class StudentService : public Service
@@ -53,7 +55,7 @@ public:
 template <class T>
 T maximum(T a, T b)
 {
-    if (a < b)
+    if (a > b)
         return a;
 
     return b;
@@ -94,7 +96,7 @@ int main()
                     employeeAmount)
              << endl;
     }
-    catch (runtime_error e)
+    catch (const exception &e)
     {
         cout << "Runtime error: "
              << e.what() << endl;
